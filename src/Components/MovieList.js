@@ -12,14 +12,17 @@ import {
 class MovieList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      moviesList: props.movies.results
-    };
   }
   render() {
     return (
       <div className="movie-list">
-        <Row>{this.state.moviesList.map(movie => <Movie movie={movie} />)}</Row>
+        {this.props.movies.length === 0 && !this.props.loading ? (
+          <p>No Result </p>
+          ):(
+            <Row>{this.props.movies.map(movie => <Movie movie={movie} />)}</Row>
+          )
+        }
+
       </div>
     );
   }
