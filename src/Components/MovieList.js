@@ -19,7 +19,7 @@ class MovieList extends Component {
         {this.props.movies.length === 0 && !this.props.loading ? (
           <p>No Result </p>
           ):(
-            <Row>{this.props.movies.map(movie => <Movie movie={movie} />)}</Row>
+            <Row>{this.props.movies.map(movie => <Movie movie={movie} key={movie.id}/>)}</Row>
           )
         }
 

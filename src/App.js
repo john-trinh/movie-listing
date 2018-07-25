@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
 import Loader from "react-loader-spinner";
-import { Container } from "reactstrap";
+import { Container, Button } from "reactstrap";
 import MovieList from "./Components/MovieList";
 import Header from "./Components/Header";
 import Sorting from "./Components/Sorting";
-import moment from 'moment'
+import Paging from './Components/Paging';
+import moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp} from '@fortawesome/free-solid-svg-icons'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +16,11 @@ class App extends Component {
       moviesData: [],
       moviesToShow: [],
       isLoading: true,
-      sortValue:''
+      sortValue:'',
+      paging: {
+        currentPage: 1,
+        totalPage: ''
+      }
     };
   }
 
@@ -28,7 +35,11 @@ class App extends Component {
             that.setState({
               moviesData: data,
               moviesToShow: data.results,
-              isLoading: false
+              isLoading: false,
+              paging: {
+                currentPage: data.page,
+                totalPage: data.total_pages
+              }
             });
           }, 500);
         });
@@ -94,6 +105,13 @@ class App extends Component {
     });
   }
 
+  handleScrollTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -108,9 +126,15 @@ class App extends Component {
                 <Loader className="loading" type="TailSpin" color="#00BFFF" height="100" width="100"/>
               </div>
             ) : (
-              <MovieList movies={this.state.moviesToShow} loading={this.state.isLoading}/>
+              <div className="movies-section">
+                <MovieList movies={this.state.moviesToShow} loading={this.state.isLoading}/>
+                <Paging paging={this.state.paging}/>
+              </div>
             )}
           </Container>
+        </div>
+        <div className="scroll-top">
+          <Button color="primary" onClick={this.handleScrollTop.bind(this)}><FontAwesomeIcon icon={faArrowUp} /></Button>
         </div>
       </div>
     );

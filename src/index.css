@@ -4,12 +4,16 @@ body {
   font-family: sans-serif;
   background-color: #f7f7f7;
 }
+.App {
+  position: relative;
+}
 a:hover {
   text-decoration: none;
   color: transparent;
 }
 .main-contain {
   margin-top: 140px;
+  margin-bottom: 50px;
 }
 
 .movie-list {
@@ -103,6 +107,18 @@ a:hover {
 .sort-compo {
   text-align: right;
   margin-bottom: 30px;
+}
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+}
+
+.scroll-top .btn {
+  border-radius: 50%;
+}
+.scroll-top .btn:hover {
+  border: 3px solid #007bff;
 }
 
 @media screen and (min-width: 768px) {
