@@ -9,6 +9,7 @@ import Paging from './Components/Paging';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp} from '@fortawesome/free-solid-svg-icons'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -145,7 +146,7 @@ class App extends Component {
         <div className="main-contain">
           <Container>
             <div className="sort-compo">
-              <Sorting sortBy={this.handleSort.bind(this)} isReset={this.state.sortValue ? false: true}></Sorting>
+              <Sorting sortBy={this.handleSort.bind(this)} isReset={this.state.sortValue ? false : true}></Sorting>
             </div>
             {this.state.isLoading ? (
               <div className="loading">
