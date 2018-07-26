@@ -120,6 +120,18 @@ a:hover {
 .scroll-top .btn:hover {
   border: 3px solid #007bff;
 }
+.paging-wrap .btn {
+  border-radius: 50%;
+
+}
+.paging-wrap .page-number {
+  color: #707070;
+  font-style: italic;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
 
 @media screen and (min-width: 768px) {
   .header .logo {

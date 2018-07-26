@@ -31,10 +31,11 @@ export default class Sorting extends Component {
   }
 
   render() {
+    const status = this.props.isReset;
     return (
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle caret>
-          {this.state.dropdownValue}
+          {!status ? this.state.dropdownValue : 'Sorting'}
         </DropdownToggle>
         <DropdownMenu>
         {this.state.actions.map(action =>

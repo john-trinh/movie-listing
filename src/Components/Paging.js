@@ -13,14 +13,27 @@ export default class Paging extends Component {
   //   })
   // }
 
+  handleNextPage() {
+    this.props.changePage('next');
+  }
+
+  handlePrevPage() {
+    this.props.changePage('prev');
+  }
+
   render() {
     return (
       <div className="paging-wrap">
-        <Button color="success" disabled={this.props.paging.currentPage === 1 ? true: false}>
+        <Button
+          color="success"
+          disabled={this.props.paging.currentPage === 1 ? true: false}
+          onClick={this.handlePrevPage.bind(this)}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </Button>
-        <span className="page-number">{this.props.paging.currentPage }/{this.props.paging.totalPage}</span>
-        <Button color="success">
+        <span className="page-number">{this.props.paging.currentPage } of {this.props.paging.totalPage}</span>
+        <Button
+          color="success"
+          onClick={this.handleNextPage.bind(this)}>
           <FontAwesomeIcon icon={faArrowRight} />
         </Button>
       </div>

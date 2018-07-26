@@ -25,8 +25,12 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.getData({page: this.state.paging.currentPage});
+  }
+
+  getData(params) {
     const url =
-      "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&page=${params.page}`;
     fetch(url).then(res => {
       if (res) {
         res.json().then(data => {
@@ -59,6 +63,10 @@ class App extends Component {
       });
     } else if (this.state.sortValue) {
       this.handleSort(this.state.sortValue);
+    } else {
+      this.setState({
+        moviesToShow: movieList
+      });
     }
   }
 
@@ -67,6 +75,7 @@ class App extends Component {
       case ('a-to-z'): this.ascendingSort(value); break;
       case ('release-day'): this.releaseDateSort(value); break;
       case ('popularity'): this.popularitySort(value); break;
+      default: break;
     }
   }
 
@@ -112,6 +121,23 @@ class App extends Component {
     });
   }
 
+  changePage(value) {
+    this.setState({
+      moviesData: [],
+      moviesToShow: [],
+      isLoading: true,
+      sortValue: ''
+    });
+
+    if (value === 'next' && this.state.paging.currentPage < this.state.paging.totalPage ) {
+      this.getData({page: this.state.paging.currentPage + 1});
+    } else if (value === 'prev' && this.state.paging.currentPage > 1) {
+      this.getData({page: this.state.paging.currentPage - 1});
+    } else {
+      this.getData({page: 1});
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -119,7 +145,7 @@ class App extends Component {
         <div className="main-contain">
           <Container>
             <div className="sort-compo">
-              <Sorting sortBy={this.handleSort.bind(this)}></Sorting>
+              <Sorting sortBy={this.handleSort.bind(this)} isReset={this.state.sortValue ? false: true}></Sorting>
             </div>
             {this.state.isLoading ? (
               <div className="loading">
@@ -128,7 +154,7 @@ class App extends Component {
             ) : (
               <div className="movies-section">
                 <MovieList movies={this.state.moviesToShow} loading={this.state.isLoading}/>
-                <Paging paging={this.state.paging}/>
+                <Paging paging={this.state.paging} changePage={this.changePage.bind(this)}/>
               </div>
             )}
           </Container>
