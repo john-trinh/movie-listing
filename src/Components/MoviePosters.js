@@ -49,7 +49,16 @@ export default class MoviePosters extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       centerMode: true,
-      centerPadding: '150px '
+      centerPadding: '150px',
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: false,
+          }
+        }
+      ]
     };
     return (
       <div className="modal-wrap">

@@ -108,7 +108,7 @@ class App extends Component {
 
   popularitySort(value) {
     let movieList = this.state.moviesData.results.slice();
-    movieList.sort((a, b) => a.popularity - b.popularity);
+    movieList.sort((a, b) => (b.popularity - a.popularity));
     this.setState({
       sortValue: value,
       moviesToShow: movieList

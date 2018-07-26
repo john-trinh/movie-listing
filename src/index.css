@@ -11,8 +11,8 @@ body {
   position: relative;
 }
 a:hover {
-  text-decoration: none;
-  color: transparent;
+  text-decoration: none !important;
+  color: transparent !important;
 }
 .main-contain {
   margin-top: 140px;
@@ -133,7 +133,9 @@ a:hover {
   padding-left: 20px;
   padding-right: 20px;
 }
-
+.modal.show .modal-dialog {
+  margin-top: 0;
+}
 
 
 @media screen and (min-width: 768px) {
@@ -177,6 +179,9 @@ a:hover {
     opacity: 1;
     padding: 0;
   }
+  .modal .modal-body {
+    position: absolute;
+  }
 }
 .modal-open .modal-backdrop.show {
   opacity: 1;
@@ -197,17 +202,21 @@ a:hover {
   border-radius: none;
 }
 .modal-open .modal {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 .modal .modal-dialog,
 .modal .modal-content {
   height: 100%;
 }
 .modal .modal-body {
-  position: absolute;
   max-width: 100%;
   padding: 0;
   bottom: 50%;
   transform: translateY(50%);
   z-index: 2;
+}
+@media (max-width: 767px) {
+  .slick-slider {
+    transform: translateY(50%);
+  }
 }
