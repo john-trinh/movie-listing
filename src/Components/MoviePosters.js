@@ -31,14 +31,13 @@ export default class MoviePosters extends Component {
     let imgResult = await imgResponse.json();
     let videoResponse = await fetch(videoUrl);
     let videoResult = await videoResponse.json();
-    setTimeout(() => {
-      this.setState({
-        backdropImg: imgResult.backdrops,
-        trailer: videoResult.results[0].key,
-        isLoading: false
-      });
-      this.toggle();
-    }, 1000);
+
+    this.setState({
+      backdropImg: imgResult.backdrops,
+      trailer: videoResult.results[0].key,
+      isLoading: false
+    });
+    this.toggle();
   }
   render() {
     const externalCloseBtn = (
@@ -62,7 +61,7 @@ export default class MoviePosters extends Component {
         {
           breakpoint: 768,
           settings: {
-            arrows: false,
+            arrows: true,
             centerMode: false,
           }
         }

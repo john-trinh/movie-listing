@@ -93,11 +93,16 @@ a:hover {
   margin-top: 5px;
   border-radius: 50px;
   border: 1px solid #ccc;
-  transition: 0.2s ease-in;
-  transition-property: width;
+  transform: translate3d(0, 0, 0);
+  transition: 0.2s ease-out;
+  transition-property: width, border, transform;
 }
 .search-box input:focus {
   width: 60%;
+  border-color: #c7c7c7;
+  border-right-width: 4px;
+  border-bottom-width: 2px;
+  transform: translate3d(-2px, -3px, -3px);
 }
 
 .search-box button {
@@ -163,17 +168,21 @@ a:hover {
   opacity: 1;
 }
 
-.slick-slider .slick-prev {
-  left: -40px;
-}
-.slick-slider .slick-next {
-  right: -20px;
-}
+
 
 .slick-slider .slick-arrow:before {
   font-size: 40px;
 }
+.slick-slider .slick-prev {
+  top: 100%;
+  left: 40%;
+  transform: translateX(-40%);
+}
 
+.slick-slider .slick-next {
+  right: 40%;
+  top: 104%;
+}
 
 .modal .modal-content {
   background-color: transparent;
@@ -257,6 +266,14 @@ a:hover {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+  }
+  .slick-slider .slick-prev {
+    top: 50%;
+    left: -40px;
+  }
+  .slick-slider .slick-next {
+    top: 50%;
+    right: -20px;
   }
 }
 @media (max-width: 767px) {
