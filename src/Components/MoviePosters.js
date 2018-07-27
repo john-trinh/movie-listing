@@ -73,28 +73,24 @@ export default class MoviePosters extends Component {
           <div className="loading">
             <Loader className="loading" type="TailSpin" color="#00BFFF" height="100" width="100"/>
           </div>
-        ) : (
-          <Modal
-            isOpen={this.state.modal}
-            toggle={this.toggle}
-            className={this.props.className}
-            external={externalCloseBtn}
-            backdrop={'static'}>
-            <ModalBody>
-              <div className="slick-wrapper">
-              <Slider {...settings}>
-                <div className="trailer" >
-                  <iframe src={`https://www.youtube.com/embed/${this.state.trailer}`} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          ) : (
+            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn} backdrop={'static'}>
+              <ModalBody>
+                <div className="slick-wrapper">
+                  <Slider {...settings}>
+                    <div className="trailer" >
+                      <iframe src={`https://www.youtube.com/embed/${this.state.trailer}`} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                    {this.state.backdropImg.map(img => (
+                      <img src={`https://image.tmdb.org/t/p/original${img.file_path}`} key={img.file_path} alt={img.file_path}/>
+                      )
+                    )}
+                  </Slider>
                 </div>
-                {this.state.backdropImg.map(img => (
-                  <img src={`https://image.tmdb.org/t/p/original${img.file_path}`} key={img.file_path} alt={img.file_path}/>
-                  )
-                )}
-              </Slider>
-              </div>
-            </ModalBody>
-          </Modal>
-        )}
+              </ModalBody>
+            </Modal>
+          )
+        }
       </div>
     );
   }

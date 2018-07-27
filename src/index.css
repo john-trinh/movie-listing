@@ -28,8 +28,8 @@ a:hover {
 .loading div {
   position: absolute;
   top: 40%;
-  right: 50%;
-  transform: trans(-50%, -40%);
+  left: 50%;
+  transform: translate(-50%, -40%);
 }
 .modal-wrap .loading {
   background-color: rgba(0, 0, 0, 0.8);

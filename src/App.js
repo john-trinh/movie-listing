@@ -46,7 +46,7 @@ class App extends Component {
                 totalPage: data.total_pages
               }
             });
-          }, 1000);
+          }, 100000);
         });
       }
     });
