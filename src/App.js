@@ -46,7 +46,7 @@ class App extends Component {
                 totalPage: data.total_pages
               }
             });
-          }, 500);
+          }, 1000);
         });
       }
     });
@@ -145,15 +145,15 @@ class App extends Component {
         <Header searchText={this.handleSearch.bind(this)} />
         <div className="main-contain">
           <Container>
-            <div className="sort-compo">
-              <Sorting sortBy={this.handleSort.bind(this)} isReset={this.state.sortValue ? false : true}></Sorting>
-            </div>
             {this.state.isLoading ? (
               <div className="loading">
                 <Loader className="loading" type="TailSpin" color="#00BFFF" height="100" width="100"/>
               </div>
             ) : (
               <div className="movies-section">
+                <div className="sort-compo">
+                  <Sorting sortBy={this.handleSort.bind(this)} isReset={this.state.sortValue ? false : true}></Sorting>
+                </div>
                 <MovieList movies={this.state.moviesToShow} loading={this.state.isLoading}/>
                 <Paging paging={this.state.paging} changePage={this.changePage.bind(this)}/>
               </div>

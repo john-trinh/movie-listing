@@ -15,12 +15,12 @@ export default class Header extends Component {
       <div className="header">
         <Container>
           <Row>
-            <Col xs="12" sm="6">
-              <div className="logo">
+            <Col xs="12" sm="6" xs="4">
+              <a className="logo" href="/">
                 <img src={logo} className="App-logo" alt="logo" />
-              </div>
+              </a>
             </Col>
-            <Col xs="12" sm="6">
+            <Col xs="12" sm="6" xs="8">
               <div className="search-box">
                 <input type="text" onChange={e => this.handleChange(e.target.value)} placeholder="Search..."/>
               </div>

@@ -14,8 +14,28 @@ a:hover {
   text-decoration: none !important;
   color: transparent !important;
 }
+
+.loading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fafafa;
+  opacity: 0.8;
+  z-index: 2;
+}
+.loading div {
+  position: absolute;
+  top: 40%;
+  right: 50%;
+  transform: trans(-50%, -40%);
+}
+.modal-wrap .loading {
+  background-color: rgba(0, 0, 0, 0.8);
+}
 .main-contain {
-  margin-top: 140px;
+  margin-top: 100px;
   margin-bottom: 50px;
 }
 
@@ -57,8 +77,8 @@ a:hover {
 
 .header .container {
   position: relative;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .search-box {
   clear: both;
@@ -66,16 +86,18 @@ a:hover {
 }
 .search-box input {
   font-size: 18px;
-  padding: 5px 20px 5px 10px;
-  width: 30%;
   outline: none;
-  border: 1px solid #ccc;
+  float: right;
+  width: 45%;
+  padding: 5px 20px 5px 10px;
+  margin-top: 5px;
   border-radius: 50px;
+  border: 1px solid #ccc;
   transition: 0.2s ease-in;
   transition-property: width;
 }
 .search-box input:focus {
-  width: 50%;
+  width: 60%;
 }
 
 .search-box button {
@@ -99,8 +121,8 @@ a:hover {
 }
 
 .header .logo {
+  display: block;
   max-width: 70px;
-  margin: 0 auto;
   height: auto;
 }
 
@@ -137,58 +159,15 @@ a:hover {
   margin-top: 0;
 }
 
-
-@media screen and (min-width: 768px) {
-  .header .logo {
-    margin: 0;
-    text-align: left;
-  }
-  .main-contain {
-    margin-top: 120px;
-  }
-  .search-box input {
-    float: right;
-  }
-  .movie-list .card-body {
-    visibility: hidden;
-    opacity: 0;
-  }
-  .movie-list .card-body {
-    position: absolute;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-  }
-
-  .movie-list .card-title {
-    color: #fff;
-  }
-  .modal .modal-dialog {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-  /* .slick-slider .slick-list {
-    padding-right: 100px;
-  } */
-  .slick-slider .slick-slide {
-    opacity: .6;
-    padding: 20px 15px 0 15px;
-    transition: padding 0.3s ease-in-out;
-  }
-  .slick-slider .slick-slide.slick-current {
-    opacity: 1;
-    padding: 0;
-  }
-  .modal .modal-body {
-    position: absolute;
-  }
-}
 .modal-open .modal-backdrop.show {
   opacity: 1;
 }
 
 .slick-slider .slick-prev {
-  left: -45px;
+  left: -40px;
+}
+.slick-slider .slick-next {
+  right: -20px;
 }
 
 .slick-slider .slick-arrow:before {
@@ -211,12 +190,80 @@ a:hover {
 .modal .modal-body {
   max-width: 100%;
   padding: 0;
-  bottom: 50%;
-  transform: translateY(50%);
-  z-index: 2;
+}
+.trailer {
+  position: relative;
+	padding-bottom: 56.25%;
+	height: 0;
+}
+.trailer iframe {
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .header .logo {
+    margin: 0;
+    text-align: left;
+  }
+  .header .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .main-contain {
+    margin-top: 120px;
+  }
+  .search-box input {
+
+    width: 40%
+  }
+  .search-box input:focus {
+    width: 50%;
+  }
+
+  .movie-list .card-body {
+    visibility: hidden;
+    opacity: 0;
+  }
+  .movie-list .card-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+  }
+
+  .movie-list .card-title {
+    color: #fff;
+  }
+  .modal .modal-dialog {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .slick-slider .slick-slide {
+    opacity: .6;
+    padding: 20px 15px 0 15px;
+    transition: padding 0.3s ease-in-out;
+  }
+  .slick-slider .slick-slide.slick-current {
+    opacity: 1;
+    padding: 0;
+  }
+  .modal .modal-body {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 @media (max-width: 767px) {
-  .slick-slider {
-    transform: translateY(50%);
+  .slick-wrapper {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
