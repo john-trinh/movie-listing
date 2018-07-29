@@ -41,33 +41,38 @@ class App extends Component {
               moviesData: data,
               moviesToShow: data.results,
               isLoading: false,
+              isSearching: false,
               paging: {
                 currentPage: data.page,
                 totalPage: data.total_pages
               }
             });
-          }, 100000);
+          }, 1000);
         });
       }
     });
   }
 
-  handleSearch(value) {
-    let movieList = this.state.moviesData.results.slice();
+  async handleSearch(value) {
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&query=${value}`;
+    this.setState({
+      isLoading: true,
+      isSearching: true
+    });
 
     if (value.trim().length !== 0) {
-      movieList = movieList.filter(movie => {
-        return movie.title.toLowerCase().includes(value.toLowerCase());
-      });
+      let res = await fetch(url);
+      let movies = await res.json();
       this.setState({
-        moviesToShow: movieList
+        moviesToShow: movies.results,
+        sortValue: '',
+        isLoading: false
       });
-    } else if (this.state.sortValue) {
-      this.handleSort(this.state.sortValue);
     } else {
       this.setState({
-        moviesToShow: movieList
+        isSearching: false
       });
+      this.getData({page: this.state.paging.currentPage});
     }
   }
 
@@ -152,10 +157,10 @@ class App extends Component {
             ) : (
               <div className="movies-section">
                 <div className="sort-compo">
-                  <Sorting sortBy={this.handleSort.bind(this)} isReset={this.state.sortValue ? false : true}></Sorting>
+                  {!this.state.isSearching ? (<Sorting sortBy={this.handleSort.bind(this)} isReset={this.state.sortValue ? false : true}></Sorting> ) : ''}
                 </div>
                 <MovieList movies={this.state.moviesToShow} loading={this.state.isLoading}/>
-                <Paging paging={this.state.paging} changePage={this.changePage.bind(this)}/>
+                {!this.state.isSearching ? (<Paging paging={this.state.paging} changePage={this.changePage.bind(this)}/> ) : ''}
               </div>
             )}
           </Container>

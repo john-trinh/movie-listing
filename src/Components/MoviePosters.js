@@ -59,7 +59,7 @@ export default class MoviePosters extends Component {
       centerPadding: '150px',
       responsive: [
         {
-          breakpoint: 768,
+          breakpoint: 1024,
           settings: {
             arrows: true,
             centerMode: false,

@@ -23,6 +23,10 @@ export default class MovieItem extends Component {
 
   render() {
     const that = this;
+    let overview = this.props.movie.overview;
+    if(overview.length > 200) {
+      overview = overview.substring(0, 200) + '...';
+    }
     return (
       <Col xs="12" md="6" lg="4">
         <Card>
@@ -30,12 +34,12 @@ export default class MovieItem extends Component {
             <CardImg
               top
               width="100%"
-              src={`https://image.tmdb.org/t/p/w500${this.props.movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w342${this.props.movie.poster_path}`}
               alt={this.props.movie.title}
             />
             <CardBody>
               <CardTitle>{this.props.movie.title}</CardTitle>
-              <CardText>{this.props.movie.overview}</CardText>
+              <CardText>{overview}</CardText>
             </CardBody>
           </a>
         </Card>

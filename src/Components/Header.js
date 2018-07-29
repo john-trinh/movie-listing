@@ -17,7 +17,7 @@ export default class Header extends Component {
           <Row>
             <Col sm="6" xs="4">
               <a className="logo" href="/">
-                <img src={logo} className="App-logo" alt="logo" />
+                <img src={logo} className="App-logo" alt="Reload page" />
               </a>
             </Col>
             <Col sm="6" xs="8">
