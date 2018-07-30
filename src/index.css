@@ -53,7 +53,6 @@ a:hover {
 }
 
 .movie-list .card-body {
-  min-height: 245px;
   color: #888;
   transition: 0.5s ease-out;
   transition-property: visibility, opacity;
@@ -234,7 +233,9 @@ a:hover {
     width: 50%;
   }
 
-
+  .movie-list .card-body {
+    min-height: 220px;
+  }
   .modal .modal-dialog {
     max-width: 90%;
     margin: 0 auto;
